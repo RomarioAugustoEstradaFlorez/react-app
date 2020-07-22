@@ -1,27 +1,48 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Fragment } from 'react'
 import { Category } from '../Category'
 
 import { List, Item } from './styles'
 
 export const ListOfCategories = () => {
-    const [categories, setCategories] = useState([])
-    useEffect(() => {
-        window.fetch('https://api-pet.vercel.app/categories')
-            .then(res => res.json())
-            .then(response => {
-                setCategories(response);
-            })
-    }, []) // add array empty to stop the multiple pettitions
+	const [categories, setCategories] = useState([])
+	const [showFixed, setShowFixed] = useState(false)
 
-    return (
-        <List>
-            {
-                categories.map(category =>
-                    <Item key={category.id}>
-                        {/* <Category cover={category.cover} path={category.path} emoji={category.emoji} /> */}
-                        <Category {...category} /> {/* rest operator are the three points ...*/}
-                    </Item>)
-            }
-        </List>
-    )
+	useEffect(() => {
+		window.fetch('https://api-pet.vercel.app/categories')
+			.then(res => res.json())
+			.then(response => {
+				setCategories(response);
+			})
+	}, []) // add array empty to stop the multiple pettitions
+
+	useEffect(function () {
+		const onScroll = e => {
+			const newShowFixed = window.scrollY > 200
+			showFixed !== newShowFixed && setShowFixed(newShowFixed)
+		}
+
+		document.addEventListener('scroll', onScroll)
+
+		// clean eventListener
+		return () => document.removeEventListener('scroll', onScroll)
+	}, [showFixed])
+
+	const renderList = (fixed) => (
+		<List className={fixed ? 'fixed' : ''}>
+			{
+				categories.map(category =>
+					<Item key={category.id}>
+						{/* <Category cover={category.cover} path={category.path} emoji={category.emoji} /> */}
+						<Category {...category} /> {/* rest operator are the three points ...*/}
+					</Item>)
+			}
+		</List>
+	)
+
+	return (
+		<Fragment>
+			{renderList()}
+			{showFixed && renderList(true)}
+		</Fragment>
+	)
 }
