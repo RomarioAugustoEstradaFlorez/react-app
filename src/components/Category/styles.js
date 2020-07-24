@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { fadeIn } from '../../styles/animations'
 
 export const Anchor = styled.a`
   display: flex;
@@ -6,6 +7,7 @@ export const Anchor = styled.a`
   text-decoration: none;
   text-align: center;
   width: 75px;
+  ${fadeIn('0.3s', 'ease-in')}
 `
 
 export const Image = styled.img`
@@ -17,4 +19,5 @@ export const Image = styled.img`
   object-fit: cover;
   height: 75px;
   width: 75px;
+
 `

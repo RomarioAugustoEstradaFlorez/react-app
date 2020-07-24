@@ -1,19 +1,28 @@
 import React, { useEffect, useState, Fragment } from 'react'
 import { Category } from '../Category'
+import { CategoryFetch } from '../../fetching/CategoryFetch'
 
 import { List, Item } from './styles'
 
-export const ListOfCategories = () => {
+function useCategoriesData() {
 	const [categories, setCategories] = useState([])
-	const [showFixed, setShowFixed] = useState(false)
+	const [loading, setLoading] = useState(false)
 
-	useEffect(() => {
+	useEffect(function () {
+		setLoading(true)
 		window.fetch('https://api-pet.vercel.app/categories')
 			.then(res => res.json())
 			.then(response => {
-				setCategories(response);
+				setCategories(response)
+				setLoading(false)
 			})
 	}, []) // add array empty to stop the multiple pettitions
+
+	return { categories, loading }
+}
+export const ListOfCategories = () => {
+	const { categories, loading } = useCategoriesData() // custom hook
+	const [showFixed, setShowFixed] = useState(false)
 
 	useEffect(function () {
 		const onScroll = e => {
@@ -28,13 +37,11 @@ export const ListOfCategories = () => {
 	}, [showFixed])
 
 	const renderList = (fixed) => (
-		<List className={fixed ? 'fixed' : ''}>
+		<List fixed={fixed}>
 			{
-				categories.map(category =>
-					<Item key={category.id}>
-						{/* <Category cover={category.cover} path={category.path} emoji={category.emoji} /> */}
-						<Category {...category} /> {/* rest operator are the three points ...*/}
-					</Item>)
+				loading
+					? <Fragment key='loading'>{[1, 2, 3, 4].map(category => <Item ><CategoryFetch /></Item>)}</Fragment>
+					: categories.map(category => <Item key={category.id}><Category {...category} /></Item>)
 			}
 		</List>
 	)
