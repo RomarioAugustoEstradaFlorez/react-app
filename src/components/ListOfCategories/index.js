@@ -36,20 +36,28 @@ export const ListOfCategories = () => {
 		return () => document.removeEventListener('scroll', onScroll)
 	}, [showFixed])
 
-	const renderList = (fixed) => (
+	const renderList = (fixed, type) => (
 		<List fixed={fixed}>
 			{
 				loading
-					? <Fragment key='loading'>{[1, 2, 3, 4].map(category => <Item ><CategoryFetch /></Item>)}</Fragment>
-					: categories.map(category => <Item key={category.id}><Category {...category} /></Item>)
+					? <Fragment key='loading'>
+						{
+							[1, 2, 3, 4, 5, 6].map((itemLoad, i) => {
+								<Item key={`${type}-load-${i}`} ><CategoryFetch /></Item>
+							})
+						}
+					</Fragment>
+					: categories.map((cate, i) => {
+						return (<Item key={`${type}-${cate.id}`}><Category {...cate} /> </Item>)
+					})
 			}
 		</List>
 	)
 
 	return (
 		<Fragment>
-			{renderList()}
-			{showFixed && renderList(true)}
+			{renderList(false, 'higher')}
+			{showFixed && renderList(true, 'small')}
 		</Fragment>
 	)
 }
