@@ -5,7 +5,7 @@ import { List } from './styles'
 export const ListOfPhotoCards = () => {
   return (
     <List>
-      {[1, 2, 3].map(id => <PhotoCard key={id} />)}
+      {[1, 2, 3, 4, 5, 6].map(id => <PhotoCard key={id} />)}
     </List>
   )
 }
