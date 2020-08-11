@@ -1,9 +1,9 @@
 import React, { Fragment } from "react"
 import { ListOfCategories } from './components/ListOfCategories'
 import { GlobalStyle } from './styles/GlobalStyles'
-import { ListOfPhotoCards } from './container/ListOfPhotoCards'
+import { ListOfPhotoCards } from './container/listOfPhotoCards'
 import { Logo } from './components/Logo'
-import { PhotoCardWithQuery } from './container/PhotoCardWithQuery'
+import { PhotoCardWithQuery } from './container/photoCardWithQuery'
 
 export const App = () => {
 	const urlParams = new window.URLSearchParams(window.location.search)
