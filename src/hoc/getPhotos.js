@@ -1,7 +1,7 @@
 import { graphql } from 'react-apollo'
 import { gql } from 'apollo-boost' // thi is to understand the syntax graphql in asimple string
 
-export const getPhotos = graphql(gql`
+const GET_PHOTOS = gql`
 query getPhotos( $categoryId: ID ) {
   photos( categoryId: $categoryId ) {
     id
@@ -11,5 +11,6 @@ query getPhotos( $categoryId: ID ) {
     userId
     liked
   }
-}
-`)
+}`
+
+export const getPhotos = graphql(GET_PHOTOS)

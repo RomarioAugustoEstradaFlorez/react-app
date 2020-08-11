@@ -29,6 +29,7 @@ const gradientKeyFrames = keyframes`
 	}
 	50% {
     opacity: 1;
+    transform: translateY(-10px);
 		/* background-position: 100% 100%; */
 	}
 	100% {
@@ -38,8 +39,29 @@ const gradientKeyFrames = keyframes`
 	}
 `
 
+const jumpKeyFrames = keyframes`
+  0% {
+    opacity: 0;
+    transform: rotate(0deg);
+    transform: translateY(0);
+		/* background-position: 25% 100%; */
+	}
+	50% {
+    opacity: 1;
+    transform: translateY(-10px);
+		/* background-position: 100% 100%; */
+	}
+	100% {
+    opacity: 0;
+    transform: rotate(360deg);
+    transform: translateY(0);
+		/* background-position: 25% 100%; */
+	}
+`
+
 export const fadeIn = ({ time = '1s', type = 'ease' } = {}) =>
   css`animation: ${time} ${fadeInKeyframes} ${type};`
+
 
 export const loadRotate = ({ transition = '0.5s', time = '1s', type = 'ease-in' } = {}) => css`
   -webkit-transition: all ${transition} ${type};
@@ -59,3 +81,8 @@ export const loadGradient = ({ time = '1s', type = 'ease' } = {}) => css`
 	/* background-size: 200% 200%; */
   animation: ${gradientKeyFrames} ${time} ${type} infinite;
 `
+
+export const jumping = ({ time = '1s', type = 'ease-in', iteration = 'infinite' } = {}) => css`
+  animation: ${jumpKeyFrames} ${time} ${type} infinite;
+`
+

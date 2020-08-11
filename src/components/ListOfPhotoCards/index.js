@@ -11,6 +11,7 @@ import { getPhotos } from '../../hoc/getPhotos'
 //   )
 // }
 // const ListOfPhotoCardsComponent = (props) => { // debug only
+
 export const ListOfPhotoCardsComponent = ({ data: { photos = [] } } = {}) => { // directly to the images
   return (
     <ul>
