@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 import { fadeIn } from '../../styles/animations'
+import { Link as LinkRoutersss } from '@reach/router'
 
-export const Anchor = styled.a`
+export const TheLink = styled(LinkRoutersss)`
   display: flex;
   flex-direction: column;
   text-decoration: none;
