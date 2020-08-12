@@ -1,9 +1,9 @@
-import React, { Fragment } from "react"
-import { ListOfCategories } from './components/ListOfCategories'
+import React from "react"
 import { GlobalStyle } from './styles/GlobalStyles'
-import { ListOfPhotoCards } from './container/listOfPhotoCards'
 import { Logo } from './components/Logo'
 import { PhotoCardWithQuery } from './container/photoCardWithQuery'
+import { Router } from '@reach/router'
+import { Home } from './pages/Home'
 
 export const App = () => {
 	const urlParams = new window.URLSearchParams(window.location.search)
@@ -18,10 +18,12 @@ export const App = () => {
 					?
 					<PhotoCardWithQuery id={detailId} />
 					:
-					<Fragment>
-						<ListOfCategories />
-						<ListOfPhotoCards categoryId={null} />
-					</Fragment>
+					<Router>
+						<Home path="/" />
+						<Home path="/pet/:cateId" />
+						{/* <Home /> */}
+					</Router>
+
 			}
 		</div>
 	)

@@ -48,7 +48,7 @@ export const ListOfCategories = () => {
 						}
 					</Fragment>
 					: categories.map((cate, i) => {
-						return (<Item key={`${type}-${cate.id}`}><Category {...cate} /> </Item>)
+						return (<Item key={`${type}-${cate.id}`}><Category {...cate} path={`/pet/${cate.id}`} /> </Item>)
 					})
 			}
 		</List>
