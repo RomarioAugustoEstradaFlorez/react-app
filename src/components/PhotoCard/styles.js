@@ -3,6 +3,7 @@ import { fadeIn } from '../../styles/animations'
 
 export const Article = styled.article`
   min-height: 200px; /* to put the others articles in the viewport with this */
+  padding: 20px;
 `
 
 export const ImgWrapper = styled.div`
@@ -23,13 +24,4 @@ export const Img = styled.img`
   position: absolute;
   top: 0;
   width: 100%;
-`
-
-export const Button = styled.button`
-  display: flex;
-  align-items: center;
-  padding-top: 8px;
-  & svg { /*this with the & say that all of svg in the father, that is a button will have that properties */
-    margin-right: 4px;
-  }
 `
