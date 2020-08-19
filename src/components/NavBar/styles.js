@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Link as LinkRouter } from '@reach/router'
+import { fadeIn } from '../../styles/animations'
 
 export const Nav = styled.nav`
   align-items: center;
@@ -26,4 +27,18 @@ export const Link = styled(LinkRouter)`
   justify-content: center;
   text-decoration: none;
   width: 100%;
+
+  &[aria-current] {
+    /* color: #000; */
+
+    &:after{
+      content: '.';
+      position: absolute;
+      bottom: 20px;
+      font-size: 50px;
+      line-height: 10px;
+      color: red;
+      ${fadeIn({ time: '.6s' })};
+    }
+  }
 `
