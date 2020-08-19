@@ -40,5 +40,6 @@ export const GlobalStyle = createGlobalStyle`
 		overflow-x: hidden;
 		min-height: 100vh;
 		padding-bottom: 10px;
+		margin-bottom: 60px;
   }
 `

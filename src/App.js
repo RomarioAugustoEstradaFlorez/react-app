@@ -1,6 +1,7 @@
 import React from "react"
 import { GlobalStyle } from './styles/GlobalStyles'
 import { Logo } from './components/Logo'
+import { NavBar } from './components/NavBar'
 import { Router } from '@reach/router'
 import { Home } from './pages/Home'
 import { ItemDetail } from './pages/ItemDetail'
@@ -20,6 +21,7 @@ export const App = () => {
 				<ItemDetail path="/detail/:itemId" />
 				{/* <Home /> */}
 			</Router>
+			<NavBar />
 		</div>
 	)
 }
