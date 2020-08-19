@@ -14,7 +14,6 @@ import Context from './Context'
 
 export const App = () => {
 	const urlParams = new window.URLSearchParams(window.location.search)
-	const detailId = urlParams.get('detail')
 
 	return (
 		<div>
