@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
 import { UseInputValue } from '../../hooks/useInputValue'
-import { Form, Input, Button, Title } from './styles'
+import { Error, Form, Input, Button, Title } from './styles'
 
-export const UserForm = ({ onSubmit, title, buttonText }) => {
+export const UserForm = ({ error, loading, onSubmit, title, buttonText }) => {
   const email = UseInputValue('')
   const password = UseInputValue('')
 
@@ -16,12 +16,19 @@ export const UserForm = ({ onSubmit, title, buttonText }) => {
 
   return (
     <Fragment>
-      <Form onSubmit={handleSubmit}>
+      <Form disbaled={loading} onSubmit={handleSubmit}>
         <Title>{title}</Title>
-        <Input placeholder="Ingresar correco electrónico" type="email" {...email} />
-        <Input placeholder="Ingresar contraseña" type="password" {...password} />
-        <Button>{buttonText}</Button>
+        <Input placeholder="Ingresar correco electrónico" type="email" {...email} disbaled={loading} />
+        <Input placeholder="Ingresar contraseña" type="password" {...password} disbaled={loading} />
+        <Button disbaled={loading}>{buttonText}</Button>
       </Form>
+
+      {
+        loading && <p>Enviando datos al API...</p>
+      }
+      <Error className="form__message--error">
+        <p>{error}</p>
+      </Error>
     </Fragment>
   )
 }

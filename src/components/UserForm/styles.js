@@ -28,3 +28,9 @@ export const Title = styled.h2`
   font-weight: 500;
   padding: 8px 0;
 `
+
+export const Error = styled.div`
+  color: red;
+  font-size: 14px;
+  padding: 16px 30px;
+`
