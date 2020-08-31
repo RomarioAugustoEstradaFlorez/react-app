@@ -2,9 +2,8 @@ import React, { Fragment } from 'react'
 import { Article, ImgWrapper, Img, Button } from './styles'
 import { useNearItemsToShow } from '../../hooks/useNearItemsToShow'
 import { useMouseBehaviour } from '../../hooks/useMouseBehaviour'
-import { LikeButton } from '../../components/LikeButton'
+import { LikeButton } from '../LikeButton'
 import { ToggleLikeMutation } from '../../container/toggleLikeMutation'
-
 import { Link as TheLink } from '@reach/router'
 
 const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'

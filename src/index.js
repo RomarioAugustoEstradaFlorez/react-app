@@ -7,9 +7,10 @@ import Context from './Context'
 
 // Components
 import { App } from './App'
-
+// var api = "http://localhost:3500/graphql"
+var api = "https://api-pet.vercel.app/graphql"
 const client = new ApolloClient({
-  uri: 'https://api-pet.vercel.app/graphql',
+  uri: api,
   request: ope => {
     const token = sessionStorage.getItem("token");
     const Authorization = token ? `Bearer ${token}` : ""

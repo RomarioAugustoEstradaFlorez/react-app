@@ -1,12 +1,13 @@
-import React, { Fragment } from "react"
+import React from "react"
 import { ListOfCategories } from '../components/ListOfCategories'
 import { ListOfPhotoCards } from '../container/listOfPhotoCards'
+import { SeoBehaviour } from '../components/SeoBehaviour'
 
 export const Home = (path) => {
   return (
-    <Fragment>
+    <SeoBehaviour title="Mascotas para todo gusto" description="Aquí verás un stock de animales para el hogar muy bonitos y por categorías!" >
       <ListOfCategories />
       <ListOfPhotoCards categoryId={path.cateId} />
-    </Fragment>
+    </SeoBehaviour>
   )
 }

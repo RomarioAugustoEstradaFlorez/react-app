@@ -1,9 +1,9 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { FavsWithQuery } from '../container/getFavorites'
+import { SeoBehaviour } from '../components/SeoBehaviour'
 
 export const Favs = () => (
-  <Fragment>
-    <h1>Tus favoritas</h1>
+  <SeoBehaviour title="Tus mascotas favoritas" description="Aquí encontrará el listado de mascotas que te han gustado!" showTitle={true} showDescription={true}>
     <FavsWithQuery />
-  </Fragment>
+  </SeoBehaviour>
 )

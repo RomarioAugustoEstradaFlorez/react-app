@@ -13,8 +13,10 @@ export const GlobalStyle = createGlobalStyle`
   
   ul, li, h1, h2, h3, p, button {
 		margin: 0;
-		padding: 0px 16px;
   }
+	h1, h2, h3{
+		padding: 0px 16px;
+	}
 
   ul {
 		list-style: none;
