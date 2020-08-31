@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import { UseInputValue } from '../../hooks/useInputValue'
-import { Error, Form, Input, Button, Title } from './styles'
+import { Error, Form, Input, Title } from './styles'
+import { SubmitButton } from '../../components/SubmitButton'
 
 export const UserForm = ({ error, loading, onSubmit, title, buttonText }) => {
   const email = UseInputValue('')
@@ -20,7 +21,7 @@ export const UserForm = ({ error, loading, onSubmit, title, buttonText }) => {
         <Title>{title}</Title>
         <Input placeholder="Ingresar correco electrónico" type="email" {...email} disbaled={loading} />
         <Input placeholder="Ingresar contraseña" type="password" {...password} disbaled={loading} />
-        <Button disbaled={loading}>{buttonText}</Button>
+        <SubmitButton disbaled={loading}>{buttonText}</SubmitButton>
       </Form>
 
       {

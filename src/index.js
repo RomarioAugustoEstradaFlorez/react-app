@@ -9,7 +9,25 @@ import Context from './Context'
 import { App } from './App'
 
 const client = new ApolloClient({
-  uri: 'https://api-pet.vercel.app/graphql'
+  uri: 'https://api-pet.vercel.app/graphql',
+  request: ope => {
+    const token = sessionStorage.getItem("token");
+    const Authorization = token ? `Bearer ${token}` : ""
+
+    ope.setContext({
+      headers: {
+        Authorization
+      }
+    })
+  },
+  onError: error => {
+    const { networkError } = error
+
+    if (networkError && networkError.result.code === "invalid_token") {
+      window.sessionStorage.removeItem("token")
+      window.location.href = "/"
+    }
+  }
 })
 
 ReactDom.render(

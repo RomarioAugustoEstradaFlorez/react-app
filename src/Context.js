@@ -12,6 +12,11 @@ const Provider = ({ children }) => {
     activateAuth: token => {
       pushIsAuth(true)
       window.sessionStorage.setItem("token", token)
+    },
+    removeAuth: token => {
+      pushIsAuth(true)
+      window.sessionStorage.removeItem("token", token)
+      window.location.href = "/user"
     }
   }
 
