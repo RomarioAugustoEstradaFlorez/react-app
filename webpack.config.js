@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackPwaManifest = require('webpack-pwa-manifest')
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
 const path = require('path')
 
 module.exports = {
@@ -16,11 +17,14 @@ module.exports = {
       short_name: 'Pettagram',
       description: 'Con Petgram puedes encontrar y subir fotos de animales domésticos.',
       background_color: '#ffffff',
-      theme_color: '#2196f3',
+      theme_color: '#efaeb1',
       crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
+      orientation: 'portrait',
+      display: 'fullscreen',
+      start_url: '/',
       ios: {
         'apple-mobile-web-app-title': 'Pettagram',
-        'apple-mobile-web-app-status-bar-style': '2196f3'
+        'apple-mobile-web-app-status-bar-style': '#efaeb1'
       },
       icons: [
         {
@@ -44,6 +48,24 @@ module.exports = {
           src: path.resolve('src/assets/img/icon.png'),
           size: '1024x1024',
           purpose: 'maskable'
+        }
+      ]
+    }),
+    new WorkboxWebpackPlugin.GenerateSW({
+      runtimeCaching: [
+        {
+          urlPattern: new RegExp('https://(res.cloudinary.com|images.unsplash.com)'),
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'images'
+          }
+        },
+        {
+          urlPattern: new RegExp('https://api-pet.midudev.now.sh/'),
+          handler: 'NetworkFirst',
+          options: {
+            cacheName: 'api'
+          }
         }
       ]
     })
