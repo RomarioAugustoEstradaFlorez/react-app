@@ -3,7 +3,7 @@ import { ListOfCategories } from '../components/ListOfCategories'
 import { ListOfPhotoCards } from '../container/listOfPhotoCards'
 import { SeoBehaviour } from '../components/SeoBehaviour'
 
-export const Home = (path) => {
+const HomePage = (path) => {
   return (
     <SeoBehaviour title="Mascotas para todo gusto" description="Aquí verás un stock de animales para el hogar muy bonitos y por categorías!" >
       <ListOfCategories />
@@ -11,3 +11,7 @@ export const Home = (path) => {
     </SeoBehaviour>
   )
 }
+
+export const Home = React.memo(HomePage, (prevProps, props) => {
+  return prevProps.cateId === props.cateId
+})
