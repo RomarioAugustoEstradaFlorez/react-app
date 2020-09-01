@@ -12,6 +12,6 @@ const HomePage = (path) => {
   )
 }
 
-export const Home = React.memo(HomePage, (prevProps, props) => {
+export default React.memo(HomePage, (prevProps, props) => {
   return prevProps.cateId === props.cateId
 })
