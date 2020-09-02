@@ -8,6 +8,8 @@ This web application works with ReactJs, it's an excersise of an app like instag
 
 This works with GraphQl, React and React Apollo to make a good connection with the syntax of react and GraphQl.
 
+Also you can install this PWA in your phone.
+
 Special thanks go to:
 - [Romario Estrada](http://www.romaef.com) for his nice develop and Platzi for them nice course of React.
 
@@ -40,8 +42,9 @@ To start the client in local:
 
 The client with webPach will run at `port 8080` and the url to access is `http://localhost:8080`.
 
+To run unit tests, this work with cypress
 
-
+- `npm run test`
 
 
 ## Browser Support
