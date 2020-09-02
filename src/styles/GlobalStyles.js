@@ -30,7 +30,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-		background: #fefefe;
+		background: #fff;
 		height: 100vh;
 		margin: 0 auto;
 		max-width: 100vh;
@@ -44,5 +44,29 @@ export const GlobalStyle = createGlobalStyle`
 		min-height: 100vh;
 		padding-bottom: 10px;
 		margin-bottom: 60px;
-  }
+	}
+	
+	.install{
+		padding: 26px 32px 0px 32px;
+		margin-bottom: 30px;
+		max-width: 100vh;
+		margin: 0 auto;
+
+		&__button{
+			border-radius: 30px;
+			width: 100%;
+			background: #a4d4d3;
+			padding: 10px 20px;
+			color: white;
+			font-size: 18px;
+
+			& .disabled {
+				background: gray;
+			}
+		}
+
+		&__button:active{
+			background: #e3b0b4;
+		}
+	}
 `

@@ -18,9 +18,8 @@ module.exports = {
       description: 'Con Petgram puedes encontrar y subir fotos de animales domésticos.',
       background_color: '#ffffff',
       theme_color: '#efaeb1',
-      crossorigin: 'use-credentials', //can be null, use-credentials or anonymous
       orientation: 'portrait',
-      display: 'fullscreen',
+      display: 'standalone',
       start_url: '/',
       ios: {
         'apple-mobile-web-app-title': 'Pettagram',

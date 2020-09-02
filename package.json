@@ -1,15 +1,17 @@
 {
     "name": "reactapp",
     "version": "1.0.0",
-    "description": "Es una aplicación de gatos",
+    "description": "Es una aplicación de MASCOTAS",
     "main": "index.js",
     "scripts": {
         "now-build": "npm run build",
         "build": "webpack",
         "lint": "standard",
         "dev": "webpack-dev-server --history-api-fallback",
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "serve:dev": "webpack --mode 'development' && npx serve dist -s"
+        "test": "cypress open",
+        "serve": "npx serve dist -s",
+        "serve:dev": "webpack --mode 'development' && npx serve dist -s",
+        "build:dev": "webpack --mode 'development'"
     },
     "repository": {
         "type": "git",
@@ -28,6 +30,7 @@
         "@babel/preset-react": "^7.10.4",
         "babel-eslint": "^10.1.0",
         "babel-loader": "^8.1.0",
+        "cypress": "^5.1.0",
         "html-webpack-plugin": "^4.3.0",
         "standard": "^14.3.4",
         "webpack": "^4.43.0",
