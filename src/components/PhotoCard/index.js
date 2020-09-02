@@ -1,20 +1,16 @@
 import React, { Fragment } from 'react'
 import { Article, ImgWrapper, Img, Button } from './styles'
-import { MdFavoriteBorder, MdFavorite } from 'react-icons/md'
 import { useNearItemsToShow } from '../../hooks/useNearItemsToShow'
-import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { useMouseBehaviour } from '../../hooks/useMouseBehaviour'
-import { LikeButton } from '../../components/LikeButton'
+import { LikeButton } from '../LikeButton'
 import { ToggleLikeMutation } from '../../container/toggleLikeMutation'
-
 import { Link as TheLink } from '@reach/router'
+import PropTypes from 'prop-types'
 
 const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
 
-export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
+export const PhotoCard = ({ id, liked, likes = 0, src = DEFAULT_IMAGE }) => {
 	const [show, element] = useNearItemsToShow() // this get for the element instead
-	const keyLike = 'like-' + id
-	const [liked, pushLiked] = useLocalStorage(keyLike, false) // this shit is awesome jaja, I love the custom hooks
 	const [over, setOver] = useMouseBehaviour();
 
 	return (
@@ -34,13 +30,11 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
 						{
 							(listenerLike) => {
 								const handleLikeClick = () => {
-									!liked && listenerLike({ // i dont know how but this increment the likes in 1
+									listenerLike({ // i dont know how but this increment the likes in 1
 										variables: {
 											input: { id }
 										}
 									})
-
-									pushLiked(!liked)
 								}
 
 								return <LikeButton liked={liked} likes={likes} onClick={handleLikeClick} />
@@ -53,4 +47,21 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
 
 		</Article>
 	)
+}
+
+PhotoCard.propTypes = {
+	id: PropTypes.string.isRequired,
+	liked: PropTypes.bool.isRequired,
+	src: PropTypes.string.isRequired,
+	likes: function (props, propName, componentName) {
+		const propValue = props[propName]
+
+		if (propValue === undefined) {
+			return new Error(`${propName} value must be defined`)
+		}
+
+		if (propValue < 0) {
+			return new Error(`${propName} value must be greater than 0`)
+		}
+	}
 }
